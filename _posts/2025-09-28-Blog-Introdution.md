@@ -4,7 +4,7 @@ title: "Likcu 's Blog Begin"
 date: 2025-09-28
 ---
 
-# Welcome to LiKCu-Blog
+## Welcome to LiKCu-Blog
 
 *I'm LiKCu*
 
