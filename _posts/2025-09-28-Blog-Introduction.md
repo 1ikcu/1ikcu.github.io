@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Likcu Blog Introdution"
+title: "Likcu Blog Introduction"
 date: 2025-09-28
 ---
 
