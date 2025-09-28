@@ -1,4 +1,4 @@
-'---
+---
 layout: post
 title: "Likcu 's Blog Begin"
 date: 2025-09-28
