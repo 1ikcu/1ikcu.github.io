@@ -3,16 +3,16 @@ layout: default
 title: LiKCu's Blog
 ---
 <div class="home">
-  <h1 calss="page-heading">Welcome 欢迎━(*｀∀´*)ノ亻!</h1>
-  <h1>Following are my blogs</h1>
+  <h2 calss="page-heading">Welcome<br>欢迎━(*｀∀´*)ノ亻!</h2>
+  <h2>Following are my blogs</h2>
   <ul class="post-list">
     <!-- 遍历所有文章 -->
     {% for post in site.posts %}
     <li>
-      <h2>
+      <h3>
         <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h2>
-      <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+      </h3>
+      <!-- <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span> -->
     </li>
   {% endfor %}
   </ul>
