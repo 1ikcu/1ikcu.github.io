@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Likcu 's Blog Begin"
 date: 2025-09-28
 ---
@@ -7,4 +8,4 @@ date: 2025-09-28
 
 *I'm LiKCu*
 
-![this is my pc](/images/other/pc,jpg)
+![this is my pc](/images/other/pc.jpg)
