@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>我的个人日志</title>
-  </head>
-  <body>
-    <h1>欢迎━(*｀∀´*)ノ亻!</h1>
-    <p>日志</p>
-  </body>
-</html>
+---
+layout: default
+title: LiKCu's Blog
+---
+<div class="home">
+  <h1 calss="page-heading">Newest log</h1>
+  <ul class="post-list">
+    <!-- 遍历所有文章 -->
+    {% for post in site.posts %}
+    <li>
+      <h2>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h2>
+      <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
