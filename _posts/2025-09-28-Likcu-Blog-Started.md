@@ -8,4 +8,4 @@ date: 2025-09-28
 
 *I'm LiKCu*
 
-![this is my pc](/images/other/pc.jpg)
+!["This is my pc"](/images/other/pc.jpg)
