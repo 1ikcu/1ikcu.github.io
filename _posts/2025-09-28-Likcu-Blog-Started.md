@@ -9,4 +9,5 @@ date: 2025-09-28
 *I'm LiKCu*
 
 This is my pc
+
 ![This is my pc](/images/other/pc.jpg)
