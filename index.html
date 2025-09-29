@@ -8,7 +8,7 @@ title: LiKCu's Blog
  
 
   <!-- 通过标题找到特定文章 -->
-  {% assign target_post = site.posts | where: "title", "LiKCu Blog Introduction" | first %}
+  {% assign target_post = site.posts | where: "title", "Likcu Blog Introduction" | first %}
   
   {% if target_post %}
   <section class="featured-post">
@@ -22,11 +22,11 @@ title: LiKCu's Blog
   {% endif %}
 
 
-  <h1>我的日志分类</h1>
+  <h1>------分界线------</h1>
 
   <!-- 生活分类 -->
   <section class="category-section">
-    <h2>📝 生活随笔</h2>
+    <h2>真•日志</h2>
     <ul class="post-list">
       {% for post in site.categories.真•日志 %}
       <li>
@@ -40,7 +40,7 @@ title: LiKCu's Blog
 
   <!-- 旅行分类 -->
   <section class="category-section">
-    <h2>✈️ 旅行见闻</h2>
+    <h2>敬请期待..</h2>
     <ul class="post-list">
       {% for post in site.categories.敬请期待 %}
       <li>
@@ -49,5 +49,5 @@ title: LiKCu's Blog
       </li>
       {% endfor %}
     </ul>
-  </section>
+  </section
 </div>
