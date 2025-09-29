@@ -2,7 +2,7 @@
 layout: post
 title: "逛了逛宁夏博物馆"
 date: 2025-09-29
-categories: [真•日志]
+categories: [真_日志]
 ---
 
 ## 逛了逛宁夏博物馆
