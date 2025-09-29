@@ -1,24 +1,109 @@
+/* 颜色变量定义 */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --text-color: #333;
+  --light-gray: #ecf0f1;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+}
+
+/* 使用颜色变量 */
+.home {
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
 .category-section {
-  margin-bottom: 3rem;
-  padding: 1.5rem;
-  background: #f8f9fa;
+  background-color: var(--light-gray);
+  border-left-color: var(--secondary-color);
+  padding: 20px;
+  margin: 20px 0;
   border-radius: 8px;
 }
 
-.category-section h2 {
-  color: #333;
-  border-bottom: 2px solid #007acc;
-  padding-bottom: 0.5rem;
+
+/* 在 MD 中可用的颜色类 */
+.color-primary { color: var(--primary-color); }
+
+.color-accent { color: var(--accent-color); }
+
+.color-success { color: var(--success-color); }
+
+.color-warning { color: var(--warning-color); }
+
+
+
+/* 标题样式 */
+.home h1 {
+  color: #2c3e50; /* 深蓝色 */
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
 }
 
+.home h2 {
+  color: #34495e; /* 稍浅的蓝色 */
+  margin-top: 30px;
+}
+
+.home h4 {
+  color: #7f8c8d; /* 灰色 */
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* 分类区域样式 */
+.category-section2 {
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+}
+
+.category-section h2 {
+  color: #2c3e50;
+  margin-top: 0;
+}
+
+/* 文章列表样式 */
 .post-list {
   list-style: none;
   padding-left: 0;
 }
 
 .post-list li {
-  margin: 0.8rem 0;
-  padding: 0.5rem;
+  margin: 15px 0;
+  padding: 10px;
   background: white;
-  border-radius: 4px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.post-link {
+  color: #2980b9; /* 链接蓝色 */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.post-link:hover {
+  color: #e74c3c; /* 悬停时变为红色 */
+  text-decoration: underline;
+}
+
+.post-meta {
+  color: #95a5a6; /* 浅灰色 */
+  font-size: 0.9em;
+  margin-left: 10px;
+}
+
+
+/* 欢迎标题特殊样式 */
+.page-heading {
+  color: #e74c3c; /* 红色 */
+  text-align: center;
+  font-size: 2em;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
