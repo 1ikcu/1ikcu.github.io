@@ -4,7 +4,7 @@ title: LiKCu's Blog
 custom_css: true
 ---
 <div class="home">
-  <h2 calss="page-heading">Welcome<br>欢迎━(*｀∀´*)ノ亻!</h2>
+  <h2 class="page-heading">Welcome<br>欢迎━(*｀∀´*)ノ亻!</h2>
   <h2>Following are my blogs</h2>
  
 
@@ -25,25 +25,30 @@ custom_css: true
   <section class="category-section">
     <h2>真•日志</h2>
     <ul class="post-list">
-      {% for post in site.categories.真_日志 %}
-      <li>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        
-      </li>
+      {% for post in site.posts %}
+        {% if post.categories contains "真_日志" %}
+        <li>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+         
+        </li>
+        {% endif %}
       {% endfor %}
     </ul>
+
   </section>
  
 
   <!-- 旅行分类 -->
   <section class="category-section">
     <h2>敬请期待..</h2>
-    <ul class="post-list">
-      {% for post in site.categories.敬请期待 %}
-      <li>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        
-      </li>
+        <ul class="post-list">
+      {% for post in site.posts %}
+        {% if post.categories contains "敬请期待" %}
+        <li>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          
+        </li>
+        {% endif %}
       {% endfor %}
     </ul>
   </section>
