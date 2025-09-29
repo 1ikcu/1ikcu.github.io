@@ -13,11 +13,9 @@ custom_css: true
   
   {% if target_post %}
   <section class="featured-post">
-    <h3>{{ target_post.title }}</h3>
-   
-    <div class="post-excerpt">
-      {{ target_post.excerpt | default: target_post.content | strip_html | truncate: 300 }} </div>
-    
+    <a href="{{ target_post.url | relative_url }}">{{ target_post.title }}</a>
+</section>
+
   {% endif %}
 
 
