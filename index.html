@@ -13,26 +13,24 @@ custom_css: true
   
   {% if target_post %}
   <section class="featured-post">
-    <h2>{{ target_post.title }}</h2>
+    <h3>{{ target_post.title }}</h3>
    
     <div class="post-excerpt">
-      {{ target_post.excerpt | default: target_post.content | strip_html | truncate: 300 }}
-    </div>
-    <a href="{{ target_post.url | relative_url }}">阅读全文</a>
-  </section>
+      {{ target_post.excerpt | default: target_post.content | strip_html | truncate: 300 }} </div>
+    
   {% endif %}
 
 
-  <h1>------分界线------</h1>
+  <h3>------分界线------</h3>
 
   <!-- 生活分类 -->
   <section class="category-section">
     <h2>真•日志</h2>
     <ul class="post-list">
-      {% for post in site.categories.真•日志 %}
+      {% for post in site.categories.真_日志 %}
       <li>
         <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+        
       </li>
       {% endfor %}
     </ul>
@@ -46,7 +44,7 @@ custom_css: true
       {% for post in site.categories.敬请期待 %}
       <li>
         <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+        
       </li>
       {% endfor %}
     </ul>
