@@ -38,7 +38,22 @@ custom_css: true
     </ul>
 
   </section>
- 
+
+
+  <section class="category-section">
+    <h2>流水账日志</h2>
+    <ul class="post-list">
+      {% for post in site.posts %}
+        {% if post.categories contains "流水账" %}
+        <li>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+         
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+  </section>
 
   <!-- 旅行分类 -->
   <section class="category-section">
