@@ -16,7 +16,7 @@ categories: [流水账]
 
 还是鸟儿
 
-![](/images/views/IMG_20251002_151_539.jpg)
+![](/images/views/IMG_20251002_151539.jpg)
 
 
 *created by LiKCu*
