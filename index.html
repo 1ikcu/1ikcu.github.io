@@ -7,7 +7,7 @@ title: LiKCu's Blog
 <header class="top-nav">
   <div class="logo">LiKCu</div>
   <nav class="menu">
-    <a href="#" class="menu-item active" onclick="switchMainTab('journal')">日志</a>
+    <a href="#" class="menu-item" onclick="switchMainTab('journal')">日志</a>
     <a href="#" class="menu-item" onclick="switchMainTab('album')">相册</a>
   </nav>
 </header>
@@ -78,6 +78,32 @@ title: LiKCu's Blog
 </div>
 
 <script>
+
+  function switchMainTab(tab) {
+    // 1. 处理顶部菜单的 active 状态
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+      // 移除所有 active 类
+      item.classList.remove('active');
+      // 根据点击的文本或自定义属性匹配
+      if (item.innerText === (tab === 'journal' ? '日志' : '相册')) {
+        item.classList.add('active');
+      }
+    });
+
+    // 2. 切换左侧菜单显示
+    document.getElementById('journal-categories').style.display = tab === 'journal' ? 'block' : 'none';
+    document.getElementById('album-categories').style.display = tab === 'album' ? 'block' : 'none';
+    
+    // 3. 隐藏所有内容区，并默认显示每个大类的第一个子分类（可选，提升体验）
+    document.querySelectorAll('.post-group').forEach(g => g.style.display = 'none');
+    if(tab === 'journal') {
+      showCategory('real-log');
+    } else {
+      showAlbum('stamp');
+    }
+  }
+  
   function switchMainTab(tab) {
     // 切换左侧菜单显示
     document.getElementById('journal-categories').style.display = tab === 'journal' ? 'block' : 'none';
