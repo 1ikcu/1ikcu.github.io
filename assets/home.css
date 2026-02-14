@@ -135,8 +135,8 @@
 }
 
 .menu-item {
-  font-size: 20px;
-  color: #000;
+  font-size: 18px;
+  color: #333;
   text-decoration: none;
   margin-right: 20px;
   cursor: pointer;
@@ -145,7 +145,7 @@
 
 /* .menu-item.active { color: white; border-bottom: 2px solid white; } */
 .menu-item.active {
-  font-size: 24px;
+  font-size: 20px;
   color: #fff !important;
   border-bottom: 2px solid #fff;
   font-weight: bold;
@@ -255,12 +255,12 @@
 .nav-btn {
   display: flex;
   align-items: center;
-  padding: 8px 16px;
+  padding: 8px 20px;
   background: rgba(255, 255, 255, 0.9);
   color: #333;
   text-decoration: none;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
@@ -285,4 +285,43 @@
     bottom: 30px;
     right: 20px;
   }
+}
+
+/* Home 文章内容样式 */
+.markdown-body {
+  line-height: 1.6;
+  color: #24292e;
+  font-size: 16px;
+}
+.markdown-body h1, .markdown-body h2 {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 0.3em;
+}
+
+/* 搜索框样式优化 */
+#post-search:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.2);
+}
+/* 搜索框清空按钮悬停 */
+#search-clear:hover {
+  color: #666 !important;
+}
+
+/* 侧边栏整体固定（防止文章太长导致侧边栏滚出视口） */
+.sidebar {
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 100px);
+  overflow-y: auto; /* 如果分类太多，侧边栏内部可滚动 */
+}
+
+/* 优化 Home 区域文章的图片宽度 */
+.markdown-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+  margin: 10px auto;
 }
