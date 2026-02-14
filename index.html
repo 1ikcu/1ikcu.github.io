@@ -23,11 +23,11 @@ title: LiKCu's Blog
           style="position: absolute; right: 10px; top: 8px; cursor: pointer; color: #ccc; display: none;">&times;</span>
     </div>
 
-    <div id="no-results" style="display: none; color: #999; font-size: 14px; padding: 10px;">
+    <div id="no-results" style="display:none; color: #999; font-size: 12px; padding: 10px;">
       未找到相关日志...
     </div>
     
-    <div id="journal-categories" style="display:none;">
+    <div id="journal-categories" style="display">
       
       <h3 class="sidebar-title">-日志-</h3>
       <ul>
@@ -161,7 +161,12 @@ title: LiKCu's Blog
     });
 
     // 处理无结果提示
-    noResults.style.display = hasVisiblePost ? "none" : "block";
+    // 有当用户输入了内容 (filter.length > 0) 且 没有匹配项时，才显示提示
+    if (filter.length > 0 && !hasVisiblePost) {
+      noResults.style.display = "block";
+    } else {
+      noResults.style.display = "none";
+    }
     
     // 搜索时，为了防止分类标题干扰，可以临时隐藏分类的大标题（可选）
     const headers = document.querySelectorAll('.post-group h2');
@@ -170,7 +175,9 @@ title: LiKCu's Blog
 
   function clearSearch() {
     const input = document.getElementById('post-search');
+    const noResults = document.getElementById('no-results');
     input.value = '';
+    noResults.style.display = "none"; // 强制隐藏提示
     searchPosts(); // 重新触发搜索逻辑以重置列表
     input.focus();
   }
