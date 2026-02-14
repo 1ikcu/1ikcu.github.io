@@ -191,6 +191,22 @@ title: LiKCu's Blog
   function showCategory(catId) {
     document.querySelectorAll('.post-group').forEach(g => g.style.display = 'none');
     document.getElementById(catId).style.display = 'block';
+
+    // 处理侧边栏按钮高亮
+    // 移除日志分类下所有 li 的 active 类
+    document.querySelectorAll('#journal-categories li').forEach(li => {
+      li.classList.remove('active-category');
+    });
+  
+    // 给当前点击的 li 加类名
+    // 通过“匹配文字”或“查找触发该函数的元素”来处理
+    // 逻辑判断：
+    const listItems = document.querySelectorAll('#journal-categories li');
+    listItems.forEach(li => {
+      if (li.getAttribute('onclick').includes(catId)) {
+        li.classList.add('active-category');
+      }
+    });
   }
 
   // 显示相册分类
@@ -212,5 +228,29 @@ title: LiKCu's Blog
         photo.style.display = 'none';
       }
     });
+    // 处理相册侧边栏高亮
+    document.querySelectorAll('#album-categories li').forEach(li => {
+      li.classList.remove('active-category');
+      if (li.getAttribute('onclick').includes(albumName)) {
+        li.classList.add('active-category');
+      }
+    });
   }
+
+  // 监听页面所有图片加载
+  document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.photo-item img');
+  
+    albumImages.forEach(img => {
+      const handleLoad = () => img.classList.add('loaded');
+
+      if (img.complete) {
+        handleLoad();
+      } else {
+        img.addEventListener('load', handleLoad);
+        // 如果加载失败也移除动画，避免一直闪烁
+        img.addEventListener('error', () => img.classList.add('loaded'));
+      }
+    });
+  });
 </script>
