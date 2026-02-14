@@ -5,7 +5,7 @@ title: LiKCu's Blog
 <link rel="stylesheet" href="{{ '/assets/home.css' | relative_url }}">
 
 <header class="top-nav">
-  <div class="logo">LiKCu</div>
+  <div class="logo"> LiKCu  </div>
   <nav class="menu">
     <a href="#" class="menu-item" onclick="switchMainTab('journal')">日志</a>
     <a href="#" class="menu-item" onclick="switchMainTab('album')">相册</a>
@@ -104,15 +104,6 @@ title: LiKCu's Blog
     }
   }
   
-  function switchMainTab(tab) {
-    // 切换左侧菜单显示
-    document.getElementById('journal-categories').style.display = tab === 'journal' ? 'block' : 'none';
-    document.getElementById('album-categories').style.display = tab === 'album' ? 'block' : 'none';
-    
-    // 隐藏所有内容区，回到初始状态
-    document.querySelectorAll('.post-group').forEach(g => g.style.display = 'none');
-  }
-
   // 显示日志分类
   function showCategory(catId) {
     document.querySelectorAll('.post-group').forEach(g => g.style.display = 'none');
