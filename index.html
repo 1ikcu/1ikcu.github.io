@@ -7,14 +7,28 @@ title: LiKCu's Blog
 <header class="top-nav">
   <div class="logo">LiKCu</div>
   <nav class="menu">
-    <a href="#" class="menu-item" onclick="switchMainTab('journal')">日志</a>
+    <a href="#" class="menu-item" onclick="switchMainTab('home')">Home</a>
+    <a href="#" class="menu-item active" onclick="switchMainTab('journal')">日志</a>
     <a href="#" class="menu-item" onclick="switchMainTab('album')">相册</a>
   </nav>
 </header>
 
 <div class="container">
   <aside class="sidebar">
-    <div id="journal-categories">
+    
+    <div id="search-section" style="margin-bottom: 20px; position: relative;">
+      <input type="text" id="post-search" placeholder="搜索日志..." onkeyup="searchPosts()" 
+           style="width: 100%; padding: 8px 30px 8px 10px; border-radius: 4px; border: 1px solid #ddd; box-sizing: border-box;">
+      <span id="search-clear" onclick="clearSearch()" 
+          style="position: absolute; right: 10px; top: 8px; cursor: pointer; color: #ccc; display: none;">&times;</span>
+    </div>
+
+    <div id="no-results" style="display: none; color: #999; font-size: 14px; padding: 10px;">
+      未找到相关日志...
+    </div>
+    
+    <div id="journal-categories" style="display:none;">
+      
       <h3 class="sidebar-title">-日志-</h3>
       <ul>
         <li onclick="showCategory('real-log')">真·日志</li>
@@ -33,6 +47,18 @@ title: LiKCu's Blog
   </aside>
 
   <main class="content-area">
+    <div id="home-content" class="post-group" style="display:none;">
+      {% assign home_post = site.posts | where: "pinned", true | first %}
+      {% if home_post %}
+        <h1>{{ home_post.title }}</h1>
+        <article class="markdown-body">
+          {{ home_post.content }}
+        </article>
+      {% else %}
+        <p>欢迎来到 LiKCu 的博客！请在 _posts 中设置一篇 pinned: true 的文章。</p>
+      {% endif %}
+    </div>
+    
     <div id="real-log" class="post-group">
       <h2>真·日志</h2>
       <ul class="post-list">
@@ -81,29 +107,77 @@ title: LiKCu's Blog
 <script>
 
   function switchMainTab(tab) {
-    // 1. 处理顶部菜单的 active 状态
+    // 处理顶部菜单的 active 状态
     const menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach(item => {
       // 移除所有 active 类
       item.classList.remove('active');
       // 根据点击的文本或自定义属性匹配
-      if (item.innerText === (tab === 'journal' ? '日志' : '相册')) {
-        item.classList.add('active');
-      }
+      if (item.innerText.toLowerCase() === tab) item.classList.add('active');
     });
+    
+    if (tab !== 'journal') {
+      clearSearch(); // 切换到 Home 或 相册时自动清空搜索
+    }
 
-    // 2. 切换左侧菜单显示
+    // 切换左侧菜单显示
     document.getElementById('journal-categories').style.display = tab === 'journal' ? 'block' : 'none';
     document.getElementById('album-categories').style.display = tab === 'album' ? 'block' : 'none';
+    document.getElementById('search-section').style.display = tab === 'journal' ? 'block' : 'none';
     
-    // 3. 隐藏所有内容区，并默认显示每个大类的第一个子分类（可选，提升体验）
+    // 隐藏所有内容区，并默认显示每个大类的第一个子分类（可选，提升体验）
     document.querySelectorAll('.post-group').forEach(g => g.style.display = 'none');
-    if(tab === 'journal') {
+    if(tab === 'home') {
+      document.getElementById('home-content').style.display = 'block';
+    } else if (tab === 'journal') {
       showCategory('real-log');
     } else {
       showAlbum('stamp');
     }
   }
+  
+  // 搜索功能
+  function searchPosts() {
+    const input = document.getElementById('post-search');
+    const filter = input.value.toLowerCase();
+    const clearBtn = document.getElementById('search-clear');
+    const noResults = document.getElementById('no-results');
+    const posts = document.querySelectorAll('.post-item');
+    
+    // 显示/隐藏清空按钮
+    clearBtn.style.display = filter.length > 0 ? 'block' : 'none';
+
+    let hasVisiblePost = false;
+    
+    posts.forEach(post => {
+      const title = post.innerText.toLowerCase();
+      if (title.includes(filter)) {
+        post.style.display = "flex";
+        hasVisiblePost = true;
+      } else {
+        post.style.display = "none";
+      }
+    });
+
+    // 处理无结果提示
+    noResults.style.display = hasVisiblePost ? "none" : "block";
+    
+    // 搜索时，为了防止分类标题干扰，可以临时隐藏分类的大标题（可选）
+    const headers = document.querySelectorAll('.post-group h2');
+    headers.forEach(h => h.style.display = filter.length > 0 ? "none" : "block");
+  }
+
+  function clearSearch() {
+    const input = document.getElementById('post-search');
+    input.value = '';
+    searchPosts(); // 重新触发搜索逻辑以重置列表
+    input.focus();
+  }
+  
+  // 初始化显示
+  window.onload = function() {
+    switchMainTab('journal'); 
+  };
   
   // 显示日志分类
   function showCategory(catId) {
