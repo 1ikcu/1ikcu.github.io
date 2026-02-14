@@ -63,7 +63,7 @@ title: LiKCu's Blog
       <h2>真·日志</h2>
       <ul class="post-list">
         {% for post in site.posts %}{% if post.categories contains "真_日志" %}
-        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span>{{ post.date | date: "%Y-%m-%d" }}</span></li>
+        <li class="post-item"><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span>{{ post.date | date: "%Y-%m-%d" }}</span></li>
         {% endif %}{% endfor %}
       </ul>
     </div>
@@ -72,7 +72,7 @@ title: LiKCu's Blog
       <h2>流水账日志</h2>
       <ul class="post-list">
         {% for post in site.posts %}{% if post.categories contains "流水账" %}
-        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span>{{ post.date | date: "%Y-%m-%d" }}</span></li>
+        <li class="post-item"><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span>{{ post.date | date: "%Y-%m-%d" }}</span></li>
         {% endif %}{% endfor %}
       </ul>
     </div>
@@ -81,7 +81,7 @@ title: LiKCu's Blog
       <h2>敬请期待</h2>
       <ul class="post-list">
         {% for post in site.posts %}{% if post.categories contains "敬请期待" %}
-        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+        <li class="post-item"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
         {% endif %}{% endfor %}
       </ul>
     </div>
@@ -113,7 +113,12 @@ title: LiKCu's Blog
       // 移除所有 active 类
       item.classList.remove('active');
       // 根据点击的文本或自定义属性匹配
-      if (item.innerText.toLowerCase() === tab) item.classList.add('active');
+      const text = item.innerText.trim();
+      if ((tab === 'home' && text === 'Home') || 
+          (tab === 'journal' && text === '日志') || 
+          (tab === 'album' && text === '相册')) {
+        item.classList.add('active');
+      }
     });
     
     if (tab !== 'journal') {
@@ -142,7 +147,7 @@ title: LiKCu's Blog
     const filter = input.value.toLowerCase();
     const clearBtn = document.getElementById('search-clear');
     const noResults = document.getElementById('no-results');
-    const posts = document.querySelectorAll('.post-item');
+    const posts = document.querySelectorAll('.post-item li');
     
     // 显示/隐藏清空按钮
     clearBtn.style.display = filter.length > 0 ? 'block' : 'none';
@@ -151,12 +156,8 @@ title: LiKCu's Blog
     
     posts.forEach(post => {
       const title = post.innerText.toLowerCase();
-      if (title.includes(filter)) {
-        post.style.display = "flex";
-        hasVisiblePost = true;
-      } else {
-        post.style.display = "none";
-      }
+      post.style.display = title.includes(filter) ? "" : "none"; 
+      if(title.includes(filter)) hasVisiblePost = true;
     });
 
     // 处理无结果提示
@@ -176,7 +177,7 @@ title: LiKCu's Blog
   
   // 初始化显示
   window.onload = function() {
-    switchMainTab('journal'); 
+    switchMainTab('home'); 
   };
   
   // 显示日志分类
