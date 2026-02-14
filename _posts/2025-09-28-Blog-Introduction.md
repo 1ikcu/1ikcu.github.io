@@ -2,6 +2,7 @@
 layout: post
 title: "Likcu Blog Introduction"
 date: 2025-09-28
+pinned: true
 ---
 
 ## Welcome to LiKCu-Blog
