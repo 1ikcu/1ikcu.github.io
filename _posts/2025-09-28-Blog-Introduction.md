@@ -12,3 +12,6 @@ pinned: true
 This is my pc
 
 ![This is my pc](/images/other/pc.jpg)
+
+
+*Contact me: * `670978813@qq.com`
