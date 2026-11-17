@@ -12,8 +12,8 @@ categories: [流水账]
 
 然后下载了 **blender** , blender 里面有使用手册，是官方的使用说明，看了一会就看困了，真助眠（  
 
-![steam](/images/202602-202712/ubuntu-blender_1.png)  
-![steam](/images/202602-202712/ubuntu_blender_2.png)  
+![blender-view](/images/202602-202712/ubuntu-blender_1.png)  
+![blender-file](/images/202602-202712/ubuntu-blender_2.png)  
 
 ---
 *Created by Likcu 2026-11-17*
